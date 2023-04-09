@@ -35,13 +35,13 @@ To use the package, extend the `BlocWidget` class and implement the `build` meth
 
 ```dart
 class MyWidget extends BlocWidget<MyBloc, MyState> {
-  const MyWidget({Key? key, required this.bloc}) : super(key: key);
+  const MyWidget({Key? key}) : super(key: key);
 
   @override
-  final MyBloc bloc;
+  final MyBloc blocInitializer => MyBloc();
 
   @override
-  Widget build(BuildContext context, MyState state) {
+  Widget build(BuildContext context, MyBloc bloc, MyState state) {
     // Build the UI based on the state of the BLoC
   }
 }
