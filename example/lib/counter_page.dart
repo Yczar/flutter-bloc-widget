@@ -49,8 +49,6 @@ class CounterWidget extends FlutterBlocWidget<CounterBloc, int> {
 class CounterBloc extends Bloc<CounterEvent, int> {
   CounterBloc() : super(0) {
     on<IncrementCounterEvent>((event, emit) {
-      print(state);
-      print(state + 1);
       emit((state + 1));
     });
     on<DecrementCounterEvent>((event, emit) => emit((state - 1)));

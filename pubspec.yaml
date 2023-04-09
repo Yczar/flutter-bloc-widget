@@ -1,11 +1,11 @@
 name: flutter_bloc_widget
 description: an experimental Flutter package that provides a new way to build widgets in Flutter applications using the BLoC (Business Logic Component) pattern.
 version: 0.0.1-alpha
-publish_to: none
+homepage: https://github.com/Yczar/flutter-bloc-widget
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
-  flutter: 3.3.0
+  flutter: any
 
 dependencies:
   flutter:

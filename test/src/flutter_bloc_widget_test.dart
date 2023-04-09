@@ -22,7 +22,6 @@ void main() {
 
       expect(find.text('Initial state'), findsOneWidget);
     });
-    // Todo(@czar): fix errors
     //   testWidgets('rebuilds widget with new state', (tester) async {
     //     await tester.pumpWidget(widget);
 
