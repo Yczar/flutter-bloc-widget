@@ -33,7 +33,7 @@ flutter packages get
 
 To use the package, extend the `BlocWidget` class and implement the `build` method, which will be called whenever the BLoC's state changes. Here's an example:
 
-````dart
+```dart
 class MyWidget extends BlocWidget<MyBloc, MyState> {
   const MyWidget({Key? key, required this.bloc}) : super(key: key);
 
@@ -67,7 +67,7 @@ For first time users, install the [very_good_cli][very_good_cli_link]:
 
 ```sh
 dart pub global activate very_good_cli
-````
+```
 
 To run all unit tests:
 
