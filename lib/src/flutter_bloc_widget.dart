@@ -9,23 +9,22 @@ abstract class FlutterBlocWidget<B extends BlocBase<S>, S>
   const FlutterBlocWidget({super.key});
 
   /// The BLoC to subscribe to.
-  B get bloc;
+  B get blocInitializer;
 
   /// Builds the widget's UI based on the BLoC's state.
   @protected
-  Widget build(BuildContext context, S state);
+  Widget build(BuildContext context, B bloc, S state);
 
   @override
 
   /// This function returns an instance of the `_FlutterBlocWidgetState` class.
-
   State<FlutterBlocWidget<B, S>> createState() =>
       _FlutterBlocWidgetState<B, S>();
 }
 
 class _FlutterBlocWidgetState<B extends BlocBase<S>, S>
     extends State<FlutterBlocWidget<B, S>> {
-  late final B _bloc = widget.bloc;
+  late final B _bloc = widget.blocInitializer;
 
   @override
   void initState() {
@@ -34,15 +33,14 @@ class _FlutterBlocWidgetState<B extends BlocBase<S>, S>
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<S>(
-      stream: _bloc.stream,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return widget.build(context, snapshot.data as S);
-        } else {
-          return const SizedBox();
-        }
-      },
+    return BlocProvider.value(
+      value: _bloc,
+      child: BlocBuilder<B, S>(
+        bloc: _bloc,
+        builder: (context, state) {
+          return widget.build(context, context.read<B>(), state);
+        },
+      ),
     );
   }
 
